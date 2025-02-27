@@ -568,7 +568,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     const clickTimerDisplay = clickGameArea.querySelector('.timer');
                     
                     let clickScore = 0;
-                    let clickTimer = 60; 
+                    let clickTimer = 30; 
                     let clickInterval;
                     let currentTarget;
                     
@@ -580,14 +580,20 @@ document.addEventListener('DOMContentLoaded', function() {
                     function startClickActivity() {
                         // Reset the game
                         clickScore = 0;
-                        clickTimer = 60; 
+                        clickTimer = 30; 
                         clickScoreDisplay.textContent = clickScore;
                         clickTimerDisplay.textContent = clickTimer;
                         
-                        // Clear any existing targets
+                        // Clear any existing targets and completion messages
                         if (currentTarget) {
                             currentTarget.remove();
                             currentTarget = null;
+                        }
+                        
+                        // Remove any existing completion message
+                        const existingCompletionMessage = clickGameArea.querySelector('.completion-message');
+                        if (existingCompletionMessage) {
+                            existingCompletionMessage.remove();
                         }
                         
                         // Start the timer
@@ -718,6 +724,12 @@ document.addEventListener('DOMContentLoaded', function() {
                             folder.setAttribute('data-status', 'inactive');
                             folder.classList.remove('active', 'success');
                         });
+                        
+                        // Remove any existing completion message
+                        const existingCompletionMessage = doubleClickArea.querySelector('.completion-message');
+                        if (existingCompletionMessage) {
+                            existingCompletionMessage.remove();
+                        }
                         
                         // Start the timer
                         doubleClickInterval = setInterval(() => {
@@ -851,6 +863,12 @@ document.addEventListener('DOMContentLoaded', function() {
                         dragScore = 0;
                         dragScoreDisplay.textContent = dragScore;
                         dragActivityActive = true;
+                        
+                        // Remove any existing completion message
+                        const existingCompletionMessage = dragGameArea.querySelector('.completion-message');
+                        if (existingCompletionMessage) {
+                            existingCompletionMessage.remove();
+                        }
                         
                         // Reset all items and zones
                         dragItems.forEach(item => {
