@@ -1087,6 +1087,7 @@ footer {
     width: 80%;
     max-width: 400px;
     animation: fadeInUp 0.5s;
+    pointer-events: none;
 }
 
 .completion-message h3 {
@@ -1138,6 +1139,7 @@ footer {
     border: 2px solid transparent;
     position: relative;
     overflow: hidden;
+    user-select: none;
 }
 
 .folder-item svg {
